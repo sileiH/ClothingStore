@@ -1,0 +1,27 @@
+.player-hidden {
+	display: none;
+}
+
+.player{
+	width:100%;
+	position:relative;
+}
+
+.player img{
+	width:100%;
+}
+
+#player-left{
+	position:absolute;
+	top:200px;
+	left:30px;
+	height:120px;
+	width:100px;
+}
+#player-right{
+	position:absolute;
+	top:200px;
+	right:30px;
+	height:120px;
+	width:100px;
+}

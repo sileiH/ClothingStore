@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.system.dao.EchartDao">
+	<select id="getAllData" resultType="com.system.entity.Sales">
+		select * from (
+			select * from sales s1 order by s1.sale_date desc limit 0,7
+		) s2 order by s2.sale_date;
+	</select>
+</mapper>

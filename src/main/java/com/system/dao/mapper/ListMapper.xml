@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.system.dao.ListDao">
+	<select id="getAllProducts" resultType="com.system.entity.ListProduct">
+		select * from commodity
+	</select>
+	<insert id="addListProduct" parameterType="com.system.entity.ListProduct">
+		insert into commodity
+		values(
+			null,
+			#{name},
+			#{price},
+			#{url},
+			#{number},
+			#{count},
+			#{introduce},
+			#{season},
+			#{series},
+			#{size},
+			#{classify},
+			#{birth},
+			#{sex},
+			#{popular},
+			#{favorite}
+		)
+	</insert>
+	<delete id="deleteListProduct" parameterType="int">
+		delete from
+		commodity where id = #{id}
+	</delete>
+	<update id="updateListProduct">
+		update commodity set 
+			name=#{listProduct.name},
+			price=#{listProduct.price},
+			url=#{listProduct.url},
+			number=#{listProduct.number},
+			count=#{listProduct.count},
+			introduce=#{listProduct.introduce},
+			season=#{listProduct.season},
+			series=#{listProduct.series},
+			size=#{listProduct.size},
+			classify=#{listProduct.classify},
+			birth=#{listProduct.birth},
+			sex=#{listProduct.sex},
+			popular=#{listProduct.popular},
+			favorite=#{listProduct.favorite}
+		where id=#{id}
+	</update>
+</mapper>

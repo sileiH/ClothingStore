@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.design.dao.UserDao">
+    <select id="findUser" resultType="string" parameterType="com.design.entity.User">
+    	select power from user
+    	<include refid="whereQuery"></include>
+    </select>
+    
+    <insert id="registerUser" parameterType="com.design.entity.User">
+    	insert into user values(
+    		null,
+    		#{account},
+    		#{username},
+    		#{password},
+    		'customer'
+    	)
+    </insert>
+    
+    <sql id="whereQuery">
+    	<where>
+    		<if test="account!=null and account!=''">
+    			account = #{account}
+    		</if>
+    		<if test="password!=null and password!=''">
+    			and password = #{password}
+    		</if>
+    	</where>
+    </sql>
+</mapper>

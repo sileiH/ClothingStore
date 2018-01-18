@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.system.dao.AuditDao">
+	<select id="getThroughData" resultType="com.design.entity.OrderInfo" parameterType="com.commom.web.PageObject">
+		select id,consignee,phone,address,e_mail,orderList from orderInfo
+		where isThrough = 0 order by createTime limit #{startIndex},#{pageSize}
+	</select>
+
+	<update id="chgThrough">
+		update orderInfo set
+		isThrough = #{isThrough},
+		updateTime = now(),
+		auditName = #{auditName},
+		reason = #{reason}
+		where id = #{id}
+	</update>
+
+	<select id="getCount" resultType="int">
+		select COUNT(1) from orderInfo where isThrough = 0
+	</select>
+</mapper>

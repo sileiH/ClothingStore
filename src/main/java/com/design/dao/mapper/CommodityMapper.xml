@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.design.dao.CommodityDao">
+	<!-- 获取查找的商品数目 -->
+	<select id="getRowCount" resultType="int" parameterType="com.design.entity.SelectDemo">
+		select count(*) from commodity
+		<where>
+			<if test="sex!=null and sex!=''">
+				sex = #{sex}
+			</if>
+			<if test="season!=null and season!=''">
+				and season = #{season}
+			</if>
+			<if test="series!=null and series!=''">
+				and series = #{series}
+			</if>
+			<if test="classify!=null and classify!=''">
+				and classify = #{classify}
+			</if>
+			<if test="init_price!=null and end_price!=null">
+				and (price >= #{init_price} and price <![CDATA[ <= ]]>  #{end_price})
+			</if>
+		</where>
+	</select>
+	
+	<select id="getObjectByNum" resultType="com.design.entity.Commodity" parameterType="string">
+		select price,url,number,introduce,name,sex,series from commodity where number=#{number}
+	</select>
+	
+	<select id="findPageObjects" resultType="com.design.entity.Commodity">
+		select * from commodity
+		<include refid="whereQuery"></include>
+		<if test="selectDemo.orderType!=null and selectDemo.orderType!=''">
+			order by ${selectDemo.orderType}
+		</if>
+		limit #{pageObject.startIndex},#{pageObject.pageSize}
+		
+	</select>
+	
+	<sql id="whereQuery">
+		<where>
+			<if test="selectDemo.sex!=null and selectDemo.sex!=''">
+				sex = #{selectDemo.sex}
+			</if>
+			<if test="selectDemo.season!=null and selectDemo.season!=''">
+				and season = #{selectDemo.season}
+			</if>
+			<if test="selectDemo.series!=null and selectDemo.series!=''">
+				and series = #{selectDemo.series}
+			</if>
+			<if test="selectDemo.classify!=null and selectDemo.classify!=''">
+				and classify = #{selectDemo.classify}
+			</if>
+			<if test="selectDemo.init_price!=null and selectDemo.end_price!=null">
+				and (price >= #{selectDemo.init_price} and price <![CDATA[ <= ]]>  #{selectDemo.end_price})
+			</if>
+		</where>
+	</sql>
+</mapper>

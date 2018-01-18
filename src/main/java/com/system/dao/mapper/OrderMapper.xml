@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.system.dao.OrderDao">
+	<select id="getAllOrderInfo" resultType="com.design.entity.OrderInfo">
+		select * from orderInfo order by createTime desc
+	</select>
+
+	<update id="updateOrderInfo" parameterType="com.design.entity.OrderInfo">
+		update orderInfo set
+			consignee = #{consignee},
+			phone = #{phone},
+			address = #{address},
+			e_mail = #{e_mail},
+			orderList = #{orderList},
+			updateTime = now()
+		where id = #{id}
+	</update>
+
+	<delete id="deleteOrderInfo" parameterType="int">
+		delete from orderInfo where id = #{id}
+	</delete>
+</mapper>

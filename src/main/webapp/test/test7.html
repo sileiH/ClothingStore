@@ -1,0 +1,96 @@
+<html>
+<head>
+<script type="text/javascript" src="../js/jquery-1.11.1.js"></script>
+<script type="text/javascript" src="../js/nav.js"></script>
+<link href="../css/nav.css" rel="stylesheet">
+<link href="../css/copyright.css" rel="stylesheet">
+<link href="../css/order_info.css" rel="stylesheet">
+<script type="text/javascript" src="../js/order_info.js"></script>
+<style type="text/css">
+.list-help {
+	border: 1px solid rgb(178, 178, 178);
+	width: 212px;
+	height: 100px;
+	padding: 10px;
+	margin-bottom: 10px;
+	margin-top: 10px;
+}
+/*白底黑字*/
+.btn-type1 {
+	background-color: white;
+	border: 1px solid rgb(178, 178, 178);
+}
+#order_info_f input{
+	border: 1px solid silver;
+	height: 30px;
+	width: 230px;
+}
+#order_info_f #btn_sub:hover {
+	border: 1px solid black;
+	width: 200px;
+	background-color: white;
+	color: black;
+	height: 40px;
+}
+
+#order_info_f #btn_sub {
+	border: 1px solid white;
+	width: 200px;
+	background-color: black;
+	color: white;
+	height: 40px;
+}
+</style>
+</head>
+<body>
+	<div class="order_info">
+		<table id="order_info_f">
+			<tr>
+				<td width="750px" colspan="4">配送地址</td>
+			</tr>
+			<tr>
+				<td colspan="4"><hr></td>
+			</tr>
+			<tr height="40px">
+				<td><span style="color: red">*</span>收货人</td>
+				<td><input type="text" placeholder="请输入真实姓名以便我们寄送货品"></td>
+				<td><span style="color: red">*</span><span>手机号码</span></td>
+				<td><input type="text" placeholder="135xxxx333"></td>
+			</tr>
+			<tr height="40px">
+				<td><span style="color: red">*</span><span>所在省市</span></td>
+				<td id="cityItem">
+					<select id="cityLevel1">
+					</select>
+					<select id="cityLevel2">
+						<option>请选择</option>
+					</select>
+					<select id="cityLevel3">
+						<option>请选择</option>
+					</select>
+				</td>
+				
+				<td><span style="color: red">*</span><span>详细地址</span></td>
+				<td><input type="text" placeholder="请输入准确地址以便我们寄送货品"></td>
+			</tr>
+			<tr height="40px">
+				<td><span style="color: red">*</span><span>邮箱</span></td>
+				<td><input type="text" placeholder="example@logo.com"></td>
+				<td></td>
+				<td></td>
+			</tr>
+			<tr>
+				<td colspan="4"><hr></td>
+			</tr>
+			<tr>
+				<td colspan="2" align="center" style="font-size: 25px">
+					商品总价:¥<span>99</span>
+				</td>
+				<td colspan="2" align="center">
+					<input type="button" value="提交订单" id="btn_sub">
+				</td>
+			</tr>
+		</table>
+	</div>
+</body>
+</html>

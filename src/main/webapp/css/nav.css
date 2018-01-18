@@ -1,0 +1,99 @@
+body {
+	margin: 0;
+	padding: 0;
+}
+
+/* * {
+	margin: 0;
+	padding: 0;
+}
+ */
+a {
+	color: white;
+	text-decoration: none;
+	cursor: pointer;
+}
+/* nav导航栏 */
+.nav-top {
+	background: black;
+	height: 62%;
+	width: 100%;
+}
+
+.nav-bottom {
+	background: rgb(70, 70, 70);
+	height: 38%;
+	width: 100%;
+}
+
+.nav-content {
+	height: 100%;
+}
+
+.nav {
+	position: fixed;
+	width: 100%;
+	height: 130px;
+	flex: 0 0 auto;
+	transition-delay: 0.5s;
+	transition: all 0.2s ease-in-out;
+	/* border-bottom: 1px solid #cecece; */
+	z-index:999;
+}
+
+.sticky {
+	height: 80px;
+}
+
+/* nab-top部分 */
+.nav-top {
+	margin: 0 auto;
+}
+
+.nav-top-table {
+	margin: 0 auto;
+	height: 100%;
+	width: 100%;
+	text-align: left;
+}
+/* nav-bottom部分 */
+.nav-bottom {
+	margin: 0 auto;
+}
+
+.nav-bottom-table {
+	margin: 0 auto;
+	height: 100%;
+	width: 30%;
+	text-align: center;
+}
+
+.nav-top-login {
+	color: white;
+}
+
+.nav-top-register {
+	color: white;
+}
+
+.nav-top-shop {
+	color: white;
+}
+
+.nav-bottom td {
+	width: 10%;
+}
+
+.stickspace {
+	transition-delay: 0.5s;
+	transition: all 0.2s ease-in-out;
+}
+
+#nav_login{
+	background-color: black;
+	border-left: 1px solid silver;
+	border-right: 1px solid silver;
+	color:white;
+	width: 150px;
+	height: 50px;
+}

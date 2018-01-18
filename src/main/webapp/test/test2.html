@@ -1,0 +1,18 @@
+<html>
+<head>
+	<script type="text/javascript" src="../js/jquery-1.11.1.js"></script>
+	<script type="text/javascript">
+        function toSearch(e){
+            alert($(e).html());
+        }
+
+        function method(e){
+            console.log(e.value);
+        }
+	</script>
+</head>
+<body>
+<a href="javascript:void(0);" onclick="toSearch(this);">男的</a>
+<input type="button" id="b1" value="b1" onclick="method(this)">
+</body>
+</html>

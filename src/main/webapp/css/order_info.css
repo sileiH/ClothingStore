@@ -1,0 +1,47 @@
+#order_info_f input {
+    width: 200px;
+    height: 20px;
+}
+
+.list-help {
+    border: 1px solid rgb(178, 178, 178);
+    width: 212px;
+    height: 100px;
+    padding: 10px;
+    margin-bottom: 10px;
+    margin-top: 10px;
+}
+
+/*白底黑字*/
+.btn-type1 {
+    background-color: white;
+    border: 1px solid rgb(178, 178, 178);
+}
+
+#order_info_f input {
+    border: 1px solid silver;
+    height: 30px;
+    width: 230px;
+}
+
+#order_info_f #btn_sub:hover {
+    border: 1px solid black;
+    width: 200px;
+    background-color: white;
+    color: black;
+    height: 40px;
+}
+
+#order_info_f #btn_sub {
+    border: 1px solid white;
+    width: 200px;
+    background-color: black;
+    color: white;
+    height: 40px;
+}
+
+#cityItem select {
+    border: 1px solid #eee;
+    height: 30px;
+    width: 100px;
+}

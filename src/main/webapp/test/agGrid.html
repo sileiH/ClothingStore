@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>agGrid Example</title>
+    <script src="../manager/js/jquery-3.2.1.min.js"></script>
+    <script src="../manager/js/ag-grid-enterprise.noStyle.js"></script>
+    <link type="text/css" rel="stylesheet" href="../manager/css/ag-grid.css">
+    <script>
+        var countries = [
+            {country: "Ireland", continent: "Europe", language: "English"},
+            {country: "Spain", continent: "Europe", language: "Spanish"},
+            {country: "United Kingdom", continent: "Europe", language: "English"},
+            {country: "France", continent: "Europe", language: "French"},
+            {country: "Germany", continent: "Europe", language: "German"},
+            {country: "Luxembourg", continent: "Europe", language: "French"},
+            {country: "Sweden", continent: "Europe", language: "Swedish"},
+            {country: "Norway", continent: "Europe", language: "Norwegian"},
+            {country: "Italy", continent: "Europe", language: "Italian"},
+            {country: "Greece", continent: "Europe", language: "Greek"},
+            {country: "Iceland", continent: "Europe", language: "Icelandic"},
+            {country: "Portugal", continent: "Europe", language: "Portuguese"},
+            {country: "Malta", continent: "Europe", language: "Maltese"},
+            {country: "Brazil", continent: "South America", language: "Portuguese"},
+            {country: "Argentina", continent: "South America", language: "Spanish"},
+            {country: "Colombia", continent: "South America", language: "Spanish"},
+            {country: "Peru", continent: "South America", language: "Spanish"},
+            {country: "Venezuela", continent: "South America", language: "Spanish"},
+            {country: "Uruguay", continent: "South America", language: "Spanish"},
+            {country: "Belgium", continent: "Europe", language: "French"}
+        ];
+        var games = ["Chess", "Cross and Circle", "Daldos", "Downfall", "DVONN", "Fanorona", "Game of the Generals", "Ghosts",
+            "Abalone", "Agon", "Backgammon", "Battleship", "Blockade", "Blood Bowl", "Bul", "Camelot", "Checkers",
+            "Go", "Gipf", "Guess Who?", "Hare and Hounds", "Hex", "Hijara", "Isola", "Janggi (Korean Chess)", "Le Jeu de la Guerre",
+            "Patolli", "Plateau", "PUNCT", "Rithmomachy", "Sahkku", "Senet", "Shogi", "Space Hulk", "Stratego", "Sugoroku",
+            "Tab", "Tablut", "Tantrix", "Wari", "Xiangqi (Chinese chess)", "YINSH", "ZERTZ", "Kalah", "Kamisado", "Liu po",
+            "Lost Cities", "Mad Gab", "Master Mind", "Nine Men's Morris", "Obsession", "Othello"
+        ];
+        var booleanValues = [true, "true", false, "false"];
+        var firstNames = ["Tony", "Andrew", "Kevin", "Dimple", "Bas", "Sophie", "Isabelle", "Emily", "Olivia", "Lily", "Chloe", "Isabella",
+            "Amelia", "Jessica", "Sophia", "Ava", "Charlotte", "Mia", "Lucy", "Grace", "Ruby",
+            "Ella", "Evie", "Freya", "Isla", "Poppy", "Daisy", "Layla"];
+        var lastNames = ["Smith", "Connell", "Flanagan", "Unalkat", "Rahman", "Beckham", "Black", "Braxton", "Brennan", "Brock", "Bryson", "Cadwell",
+            "Cage", "Carson", "Chandler", "Cohen", "Cole", "Corbin", "Dallas", "Dalton", "Dane",
+            "Donovan", "Easton", "Fisher", "Fletcher", "Grady", "Greyson", "Griffin", "Gunner",
+            "Hayden", "Hudson", "Hunter", "Jacoby", "Jagger", "Jaxon", "Jett", "Kade", "Kane",
+            "Keating", "Keegan", "Kingston", "Kobe"];
+
+        var months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+
+        var new_columnDefs = [
+            {
+                headerName: 'Participant',
+                children: [
+                    {
+                        headerName: 'Name',
+                        field: 'name',
+                        width: 200,
+                        editable: true,
+                        enableRowGroup: true,
+                    }, {
+                        hearderName: 'Language',
+                        field: 'language',
+                        width: 200,
+                        editable: true,
+                        enableRowGroup: true,
+                        enablePivot: true
+                    }, {
+                        headerName: 'Country',
+                        field: 'country',
+                        width: 200,
+                        editable: true,
+                        enableRowGroup: true,
+                        enablePivot: true
+                    }
+                ]
+            }, {
+                headerName: 'Game of Choice',
+                children: [
+                    {
+                        headerName: 'Game Name',
+                        field: 'game.name',
+                        width: 180,
+                        editable: true,
+                        enableRowGroup: true,
+                        //filter:'agSetColumnFilter',
+                        //tooltipField:'game.name'
+                    }, {
+                        headerName: 'Bought',
+                        field: 'game.bought',
+                        editable: true,
+                        width: 150,
+                        enableRowGroup: true,
+                        //filter: 'agSetColumnFilter',
+                    }
+                ]
+            }, {
+                headerName: 'Performance',
+                groupId: 'performance',
+                children: [
+                    {
+                        headerName: "Bank Balance", field: "bankBalance", width: 180, editable: true,
+                        //设置值的格式
+                        valueFormatter: currencyFormatter,
+                        //设置值的类型(数值)
+                        type: 'numericColumn',
+                        enableRowGroup: true,
+                        enableValue: true
+                        //如果您希望能够通过GUI通过此列进行聚合，请将其设置为true。
+                        // 如果使用API​​或属性来实现聚合，这不会阻塞。
+                        //enableValue: true,
+                    },
+                    {
+                        headerName: "Extra Info 1", width: 150, editable: false,
+                        //是否在组打开/关闭时显示列(也就是可以让列隐藏)
+                        columnGroupShow: 'open',
+                        //去除排序功能
+                        suppressSorting: true,
+                        //去除菜单功能
+                        suppressMenu: true,
+                        //设置类的样式
+                        cellStyle: {"text-align": "right"},
+                        //设置默认值
+                        cellRenderer: function () {
+                            return 'Abra...';
+                        }
+                    },
+                    {
+                        headerName: "Extra Info 2", width: 150, editable: false,
+                        //是否在组打开/关闭时显示列(也就是可以让列隐藏)
+                        columnGroupShow: 'open',
+                        //去除排序功能
+                        suppressSorting: true,
+                        //去除菜单功能
+                        suppressMenu: true,
+                        //设置类的样式
+                        cellStyle: {"text-align": "left"},
+                        //设置默认值
+                        cellRenderer: function () {
+                            return '...cadabra!';
+                        }
+                    }
+                ]
+            }, {
+                headerName: "Rating", field: "rating", width: 120, editable: true,
+
+                floatCell: true,
+                enableRowGroup: true,
+                enablePivot: true,
+                enableValue: true,
+                filterParams: {cellRenderer: 'ratingFilterRenderer'},
+                enableValue: true,
+                valueFormatter: chgTog
+            }
+        ];
+
+
+
+        function createData() {
+            var rowCount = 20;
+            var colCount = 5;
+            var data = [];
+            var row = 0;
+            for (var i = 0; i < 1000; i++) {
+                if (row < rowCount) {
+                    var rowItem = createRowItem(row, colCount);
+                    data.push(rowItem);
+                    row++;
+                }
+            }
+            return data;
+        }
+
+        function createRowItem(row, colCount) {
+            var rowItem = {};
+            var countriesToPickFrom = Math.floor(countries.length * ((row % 3 + 1) / 3));
+            var countryData = countries[(row * 19) % countriesToPickFrom];
+            rowItem.country = countryData.country;
+            rowItem.continent = countryData.continent;
+            rowItem.language = countryData.language;
+            var firstName = firstNames[row % firstNames.length];
+            var lastName = lastNames[row % lastNames.length];
+            rowItem.name = firstName + " " + lastName;
+            rowItem.game = {
+                name: games[Math.floor(row * 13 / 17 * 19) % games.length],
+                bought: booleanValues[row % booleanValues.length]
+            };
+            rowItem.bankBalance = ((Math.round(pseudoRandom() * 10000000)) / 100) - 3000;
+            rowItem.rating = (Math.round(pseudoRandom() * 5));
+            return rowItem;
+        }
+
+        var seed = 123456789;
+        var m = Math.pow(2, 32);
+        var a = 1103515245;
+        var c = 12345;
+
+        function pseudoRandom() {
+            seed = (a * seed + c) % m;
+            return seed / m;
+        }
+
+        var gridOptions = {
+            columnDefs: new_columnDefs,
+            rowData: createData(),
+            onGridReady: function () {
+                gridOptions.api.sizeColumnsToFit();
+            },
+            //设置默认最小宽度
+            defaultColDef: {
+                minWidth: 150
+            },
+            //行动画
+            animateRows: true,
+            //排序
+            enableSorting: true,
+            //筛选
+            enableFilter: true,
+            //可以调整列标题边大小
+            enableColResize: true,
+            //一次将选择一格,而不是一行
+            suppressRowClickSelection: true,
+            //把筛选的框显示出来
+            floatingFilter: true,
+            //设置单击则编辑,默认为双击
+            //singleClickEdit:true
+
+            showToolPanel: true
+            //enableStatusBar: true,
+            //enableRangeSelection: true,
+            //rowSelection: "multiple", // one of ['single','multiple'], leave blank for no selection
+            //rowDeselection: true,
+            //quickFilterText: null,
+            //groupSelectsChildren: true, // one of [true, false]
+            /*enableRangeSelection: true,
+            onRangeSelectionChanged: function (event) {
+
+            }*/
+
+        };
+
+        function chgTog(params) {
+            if (params.value === null || params.value === undefined) {
+                return null;
+            } else if (isNaN(params.value)) {
+                return 'NaN';
+            } else {
+                var result = '';
+                for(var i = 0;i < params.value;i ++){
+                    result += '★';
+                }
+                console.log(params);
+                console.log('★');
+                console.log(result);
+                return result;
+            }
+        }
+
+        //将货币格式化
+        function currencyFormatter(params) {
+            if (params.value === null || params.value === undefined) {
+                return null;
+            } else if (isNaN(params.value)) {
+                return 'NaN';
+            } else {
+                // if we are doing 'count', then we do not show pound sign
+                if (params.node.group && params.column.aggFunc === 'count') {
+                    return params.value;
+                } else {
+                    return '$' + Math.floor(params.value).toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,");
+                }
+            }
+        }
+
+        document.addEventListener("DOMContentLoaded", function () {
+            var eGridDiv = document.querySelector('#myGrid');
+            new agGrid.Grid(eGridDiv, gridOptions);
+            //createData();
+        });
+    </script>
+</head>
+<body>
+<h1>agGrid Example</h1>
+<div id="myGrid" style="height: 500px" class="ag-theme-fresh"></div>
+</body>
+</html>

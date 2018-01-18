@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.design.dao.ProductDao">
+	<select id="getObjectsByType" resultType="com.design.entity.Products">
+		select url,price,name,number from product
+		<where>
+			<if test="type!=null and type!=''">
+				type = #{type}
+			</if>
+		</where>
+	</select>
+	<select id="getNewObjects" resultType="com.design.entity.Products">
+	
+		select p.number,p.name,p.type,p.price,p.url from product as p where
+			(select count(*) from 
+				product np where p.type = np.type and np.storageDay > p.storageDay) <![CDATA[ < ]]>  4
+		order by p.storageDay desc;
+	</select>
+	
+</mapper>

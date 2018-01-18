@@ -1,0 +1,99 @@
+hr {
+	width: 385px;
+}
+
+.core-hot-tittle, .core-new-tittle {
+	text-align: center;
+	margin: 0 auto;
+}
+
+.core-hot-tittle-txt, .core-new-tittle-txt {
+	font-family: Georgia;
+	font-size: 30px;
+}
+
+.core-hot-show {
+	margin: 0 auto;
+	text-align: center;
+}
+
+#core-hot-shows, #core-new-shows {
+	margin: 0 auto;
+	text-align: center;
+}
+
+#core-hot-shows td, #core-new-shows td {
+	width: 240px;
+}
+
+#core-hot-shows img, #core-new-shows img {
+	border: 1px solid white;
+}
+
+.core-hot-show td {
+	width: 240px;
+}
+
+.core-hot-show-txt {
+	font-size: 20px;
+	font-weight: bold;
+}
+
+.shows-hr {
+	width: 1000px;
+	height: 1px;
+	border: none;
+	border-top: 1px dashed #0066CC;
+}
+
+.core-hot-move-hr {
+	width: 1000px;
+}
+
+.core-hot-move-div {
+	height: 50px;
+	position: relative;
+}
+
+#core-hot-hr-tag {
+	position: absolute;
+	left: 20%;
+	top: 0px;
+}
+
+.core-hot-btn {
+	background-color: black;
+	color: white;
+	border: 1px solid black;
+	height: 50px;
+	width: 420px;
+	font-size: 15px;
+	background-image: url("../img/hot/btn-background1.png");
+	background-repeat: no-repeat;
+	background-position: 80%;
+	position: absolute;
+	bottom: 0;
+	left: 35%;
+}
+
+.core-hot-btn:hover {
+	background-color: white;
+	color: black;
+	border: 1px solid black;
+	height: 50px;
+	width: 420px;
+	font-size: 15px;
+	background-image: url("../img/hot/btn-background2.png");
+	background-repeat: no-repeat;
+	background-position: 80%;
+}
+/* 设置展示的图片有个框 */
+#core-hot-shows .croe-show-frame {
+	border: 1px solid black;
+	cursor: pointer;
+}
+
+#core-new-shows .croe-show-frame {
+	border: 1px solid black;
+	cursor: pointer;
+}
