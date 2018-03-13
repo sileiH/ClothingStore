@@ -24,8 +24,6 @@
 		<img alt="jpg3" src="img/3.jpg" class="player-hidden">
 		<img alt="jpg4" src="img/4.jpg" class="player-hidden">
 		<img alt="jpg5" src="img/5.jpg" class="player-hidden">
-		<img alt="jpg6" src="img/6.jpg" class="player-hidden">
-		<img alt="jpg7" src="img/7.jpg" class="player-hidden">
 		<a href="javascript:void(0);" onclick="player_left();"><img src="img/arrow-left.png" id="player-left"></a>
 		<a href="javascript:void(0);" onclick="player_right();"><img src="img/arrow-right.png" id="player-right"></a>
 	</div>

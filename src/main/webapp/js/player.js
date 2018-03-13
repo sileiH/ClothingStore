@@ -32,7 +32,7 @@ function player_left(){
 	clearInterval(player);
 	//切换到上一张图片
 	if(player_n == 0){
-		player_n = player_n + 7;
+		player_n = player_n + 5;
 	}
 	player_n = player_n - 2;
 	player_flow();
